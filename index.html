@@ -27,10 +27,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Prevent right-click
             document.addEventListener('contextmenu', event => event.preventDefault());
-            
-            // Prevent F12 (DevTools) and Ctrl+Shift+I
+
+            // Prevent F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
             document.addEventListener('keydown', event => {
-                if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                if (event.key === 'F12' || 
+                    (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J')) || 
+                    (event.ctrlKey && event.key === 'U')) {
                     event.preventDefault();
                 }
             });
@@ -52,9 +54,16 @@
                     element.msRequestFullscreen();
                 }
             }
-            
+
             const videoContainer = document.querySelector('.video-container');
             requestFullScreen(videoContainer);
+
+            // Keep the page in fullscreen
+            setInterval(() => {
+                if (!document.fullscreenElement) {
+                    requestFullScreen(videoContainer);
+                }
+            }, 1000);
         });
     </script>
 </head>
