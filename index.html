@@ -1,75 +1,80 @@
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video for Primary School Class</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Prevent right-click
-            document.addEventListener('contextmenu', event => event.preventDefault());
 
-            // Prevent F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-            document.addEventListener('keydown', event => {
-                if (event.key === 'F12' || 
-                    (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J')) || 
-                    (event.ctrlKey && event.key === 'U')) {
-                    event.preventDefault();
-                }
-            });
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1">
 
-            // Prevent closing the tab
-            window.onbeforeunload = function() {
-                return "Are you sure you want to leave?";
-            };
+<title>Loading........</title>
 
-            // Auto full-screen
-            function requestFullScreen(element) {
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                } else if (element.msRequestFullscreen) {
-                    element.msRequestFullscreen();
-                }
-            }
+<link rel="stylesheet" href="screen.css" media="screen">
 
-            const videoContainer = document.querySelector('.video-container');
-            requestFullScreen(videoContainer);
+<style media="screen">
+html,body {
+	height: 100%;
+	margin: 0;
+}
 
-            // Keep the page in fullscreen
-            setInterval(() => {
-                if (!document.fullscreenElement) {
-                    requestFullScreen(videoContainer);
-                }
-            }, 1000);
-        });
-    </script>
+body {
+	border: 1px solid #000;
+        background-color: #000000;
+ 	box-sizing: border-box;
+ 	overflow: hidden;
+        font: normal 1em / 1.5em sans-serif;
+        animation: barrelroll 0.8s 0.8s forwards;
+        animation-iteration-count: 99999;
+ }
+
+#container {
+	width: 90%;
+	max-width: 62.5em;
+	padding: 1em;
+	margin: 1em auto;
+	border: 1px solid #999;
+	border-radius: 0.75em;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+
+h1 {
+	font-size: 1em;
+}
+
+h1 span {
+	font-size: 0.8em;
+	font-weight: normal;
+}
+
+#container div {
+	position: relative;
+	width: 48%;
+	padding-top: 27%;
+	margin: 1em auto;
+}
+
+#container iframe {
+	position: absolute;
+	top: 0;
+        width: 100%;
+        height: 100%;
+	border: 1px solid #000;
+	box-sizing: border-box;
+	box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.4 );
+} 
+
+@keyframes barrelroll {
+	from { transform: rotateZ( 0deg );}
+	to   { transform: rotateZ( 360deg );}
+} 
+</style>
+
 </head>
 <body>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&rel=0&showinfo=0&controls=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
+ <div id="container">
+  
+ <iframe src="https://player.vimeo.com/video/445798453?autoplay=1&loop=1&color=ff0179&title=0&byline=0"style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> 
+ 
+ </div>
 </body>
 </html>
